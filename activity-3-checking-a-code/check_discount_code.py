@@ -7,10 +7,10 @@ def normalise(code):
 
 
 def is_valid(code):
-    code = normalise(code)
+   code = normalise(code)
 
-    if len(code) != CODE_LENGTH:
-        return False
+. if len(code) != CODE_LENGTH:
+  return False
     if not code.startswith(VALID_PREFIX):
         return False
     if not code[4:].isdigit():
