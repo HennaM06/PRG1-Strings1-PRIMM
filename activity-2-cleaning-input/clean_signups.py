@@ -1,5 +1,5 @@
 def clean(entry):
-    return entry.strip().lower()
+    return entry.lower()
 
 
 signups = [
