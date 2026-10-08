@@ -37,21 +37,28 @@ def apply_standard_discount(subtotal):
 
 
 def validate_discount_code(code):
-    """Return True if code is a valid discount code: exactly 6 characters,
-    all uppercase letters. Not yet implemented.
-    """
-    pass
+ if len(code) == 6 and code.isalpha() and code.isupper():
+     return True
+ else:
+     return False
+
 
 
 def apply_discount_code(subtotal, code):
-    """If code is a valid discount code, apply a 20% discount instead of
-    the standard discount. Otherwise, fall back to the standard discount
-    by calling apply_standard_discount. Not yet implemented.
+   """If code is a valid discount code, apply a 20% discount instead of
+the standard discount. Otherwise, fall back to the standard discount.
     """
-    pass
+   if validate_discount_code(code):
+       return subtotal * (1 - CODE_DISCOUNT_RATE)
+   else:
+       return apply_standard_discount(subtotal)
+   
+
+ 
+    
 
 
-def print_order_summary(item_name, unit_price, quantity):
+def print_order_summary(item_name, unit_price, quantity, discount_code=""):
     """Print a summary of the order and return the final total.
 
     Needs changing. It must take a fourth parameter, discount_code, 
@@ -60,7 +67,7 @@ def print_order_summary(item_name, unit_price, quantity):
     calls that pass only three arguments must keep working.
     """
     subtotal = calculate_subtotal(unit_price, quantity)
-    total = apply_standard_discount(subtotal)
+    total = apply_discount_code(subtotal,discount_code)
     print(f"{quantity} x {item_name} @ {format_price(unit_price)}")
     print(f"Subtotal: {format_price(subtotal)}")
     print(f"Total: {format_price(total)}")
