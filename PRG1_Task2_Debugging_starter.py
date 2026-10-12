@@ -24,7 +24,7 @@ MAX_ATTEMPTS = 3
 
 def check_pin(attempt, correct_pin):
     """Return True if attempt matches correct_pin, else False."""
-    if attempt != correct_pin:
+    if attempt == correct_pin:
         return True
     else:
         return False
@@ -32,14 +32,16 @@ def check_pin(attempt, correct_pin):
 
 attempts_made = 0
 
-while attempts_made <= MAX_ATTEMPTS:
+while attempts_made < MAX_ATTEMPTS:
     entered_pin = input("Enter your 4-digit PIN: ")
     attempts_made = attempts_made + 1
 
     if check_pin(entered_pin, CORRECT_PIN):
         print("Access granted.")
+        break
     else:
         remaining = MAX_ATTEMPTS - attempts_made
         print(f"Incorrect PIN. Attempts remaining: {remaining}")
 
-print("Account locked. Too many incorrect attempts.")
+else:
+    print("Account locked. Too many incorrect attempts.")
