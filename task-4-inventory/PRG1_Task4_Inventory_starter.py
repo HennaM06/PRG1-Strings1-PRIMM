@@ -38,13 +38,33 @@ def remove_stock(inventory, item_name, quantity):
     Use get_quantity to check the current stock level; do not read
     inventory[item_name] directly, since the item might not exist yet.
     """
-    pass
+    current_stock = get_quantity(inventory,item_name)
+    
+    if current_stock >= quantity:
+
+        inventory[item_name]
+        current_stock - quantity
+        return True
+    else:
+        return False
+     
+   
+
+
+
 
 
 def low_stock_items(inventory, threshold):
     """Return a list of every item name in inventory whose quantity is
     at or below threshold."""
-    pass
+    low_stock = []
+
+    for item_name in inventory:
+        if get_quantity(inventory, item_name) <= threshold:
+             low_stock.append(item_name)
+
+
+    return low_stock
 
 
 if __name__ == "__main__":
